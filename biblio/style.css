@@ -18,7 +18,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between; /* Alinha os elementos à esquerda e direita */
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #f6a8b0; /* Linha rosa pastel */
     position: relative;
 }
 
@@ -161,6 +161,7 @@ h1 {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative; /* Para posicionar o efeito de sombra e hover */
+    border: 2px solid #f6c1d1; /* Borda rosa pastel */
 }
 
 /* Efeito hover com aumento e sombra */
@@ -175,6 +176,7 @@ h1 {
     height: auto;
     border-radius: 8px; /* Bordas arredondadas para as imagens */
     transition: transform 0.3s ease; /* Transição suave para a imagem */
+    border: 2px solid #f6c1d1; /* Borda rosa pastel nas imagens */
 }
 
 /* Efeito hover na imagem */
@@ -210,12 +212,21 @@ h1 {
     transition: opacity 0.5s ease;
 }
 
+/* Página do livro */
 #paginaLivro {
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease; /* Garantir que a transição de visibilidade aconteça */
+    max-width: 1200px; /* Limita a largura para uma boa leitura */
+    margin: 20px auto 0; /* Adiciona uma margem superior pequena */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Bordas arredondadas */
+    border: 2px solid #f6c1d1; /* Borda rosa pastel */
 }
 
+/* Exibição da página do livro quando visível */
 #paginaLivro.visible {
     display: block;
     opacity: 1;
@@ -249,6 +260,7 @@ h1 {
     margin-bottom: 20px;
     float: left;
     margin-right: 20px;
+    border: 2px solid #f6c1d1; /* Borda rosa pastel na imagem */
 }
 
 /* Ajustando o float das imagens para não sobrecarregar o layout */
@@ -274,6 +286,7 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out; /* Suaviza a transição de sombra */
+    border: 2px solid #f6c1d1; /* Borda rosa pastel para as informações extras */
 }
 
 /* Hover para cada bloco de informação */
@@ -308,8 +321,27 @@ h1 {
 }
 
 /* Efeito no botão "Voltar" */
+#paginaLivro button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #f6a8b0; /* Cor rosa pastel */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    width: 200px; /* Define a largura do botão */
+    margin-left: auto; /* Centraliza o botão */
+    margin-right: auto; /* Centraliza o botão */
+}
+
+/* Efeito no botão "Voltar" ao passar o mouse */
 #paginaLivro button:hover {
-    background-color: #45a049;
+    background-color: #f0b0b6; /* Cor mais forte ao passar o mouse */
+    transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
 }
 
 /* Estilo da seção de links de compra */
@@ -319,29 +351,20 @@ h1 {
 }
 
 .link-compra a {
-    padding: 10px 20px;
-    background-color: #007BFF;
+    padding: 12px 25px; /* Ajusta o padding para dar mais destaque */
+    background-color: #f6a8b0; /* Cor rosa pastel */
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1.2em;
     display: inline-block;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* Efeito no link de compra */
 .link-compra a:hover {
-    background-color: #0056b3;
-}
-
-/* Estilos adicionais para a página de livro para garantir uma boa leitura */
-#paginaLivro {
-    max-width: 1200px; /* Limita a largura para uma boa leitura */
-    margin: 0 auto; /* Centraliza o conteúdo */
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 12px; /* Bordas arredondadas */
+    background-color: #f0b0b6; /* Cor mais forte ao passar o mouse */
+    transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
 }
 
 /* Responsividade para telas menores */
@@ -374,26 +397,6 @@ h1 {
 #paginaLivro.hidden {
     display: none;
     opacity: 0; 
-}
-
-/* Estilo para as categorias */
-#categoriasLista {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 20px;
-}
-
-.categoria-item {
-    background-color: #f0f0f0;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.categoria-item:hover {
-    background-color: #ddd;
 }
 
 
