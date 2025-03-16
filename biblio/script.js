@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const catalogo = document.getElementById("catalogo");
     const pesquisa = document.getElementById("pesquisa");
     const paginaLivro = document.getElementById("paginaLivro");
+    const categoriasLinks = document.querySelectorAll(".dropdown-content a");
+    const dropbtn = document.querySelector(".dropbtn");
+    const dropdown = document.querySelector(".dropdown");
 
     // Função para buscar livros da API do Google Books
     async function buscarLivros(query = "Sarah j Maas") {
@@ -101,6 +104,28 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             buscarLivros(pesquisaValor);
         }
+    });
+
+    // Função de Dropdown
+    dropbtn.addEventListener("click", (event) => {
+        event.stopPropagation(); // Previne a propagação do clique para outros elementos
+        dropdown.classList.toggle("active");
+    });
+
+    // Fecha o dropdown se o usuário clicar fora
+    document.addEventListener("click", (event) => {
+        if (!dropdown.contains(event.target) && !dropbtn.contains(event.target)) {
+            dropdown.classList.remove("active");
+        }
+    });
+
+    categoriasLinks.forEach(link => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const categoria = event.target.getAttribute("data-categoria");
+            buscarLivros(categoria); // Filtra os livros pela categoria
+            dropdown.classList.remove("active"); // Fecha o dropdown após a escolha
+        });
     });
 
     // Carrega livros iniciais
