@@ -38,7 +38,7 @@ nav {
     margin-left: auto; /* Coloca a navegação à direita */
 }
 
-/* Navegação */
+/* Estilos gerais do menu */
 nav ul {
     list-style: none;
     padding: 0;
@@ -50,16 +50,27 @@ nav ul li {
     margin: 0;
 }
 
-nav ul li a {
+nav ul li a,
+nav ul li .dropbtn {
     text-decoration: none;
-    color: #555;
+    color: #555; /* Cor padrão para texto */
     font-weight: 600;
     font-size: 1.1rem;
-    transition: color 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #fff; /* Fundo branco para o botão */
+    border: 2px solid #f6a8b0; /* Bordas rosa */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
 }
 
-nav ul li a:hover {
-    color: #f6a8b0; /* Cor de destaque para hover */
+/* Efeito de hover para links e botões */
+nav ul li a:hover,
+nav ul li .dropbtn:hover {
+    background-color: #f6a8b0; /* Cor de fundo rosa pastel no hover */
+    color: white; /* Cor do texto branca no hover */
+    transform: scale(1.05); /* Efeito de aumento suave no hover */
+    border-color: #f6a8b0; /* Mantém a borda rosa no hover */
 }
 
 /* Barra de Pesquisa */
@@ -399,33 +410,58 @@ h1 {
     opacity: 0; 
 }
 
-/* Estilos básicos do dropdown */
+/* Estilo para o dropdown */
 .dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none; /* Esconde o conteúdo do dropdown por padrão */
+}
+
+.dropdown-content {
+    display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: #fff; /* Cor de fundo branco para o menu dropdown */
     min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra suave */
     z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
+    border-radius: 5px;
+}
+
+/* Estilo dos links dentro do dropdown */
+.dropdown-content a {
+    color: #555;
+    padding: 10px 20px;
     text-decoration: none;
     display: block;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  /* Quando a classe 'active' for adicionada, o dropdown será mostrado */
-  .dropdown.active .dropdown-content {
-    display: block; /* Mostra o conteúdo do dropdown */
-  }
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efeito de hover nos links do dropdown */
+.dropdown-content a:hover {
+    background-color: #f6a8b0; /* Cor de fundo rosa pastel no hover */
+    color: white; /* Cor do texto branca no hover */
+}
+
+/* Mostrar o dropdown quando hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo do botão "Categorias" */
+.dropbtn {
+    background-color: #fff;
+    color: #555;
+    border: 1px solid #f6a8b0; /* Borda rosa pastel */
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efeito de hover no botão de categorias */
+.dropbtn:hover {
+    background-color: #f6a8b0;
+    color: white;
+    transform: scale(1.05); /* Aumenta suavemente o botão */
+}
