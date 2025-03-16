@@ -79,23 +79,89 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="link-compra">
                 <a href="${linkCompra}" target="_blank">Comprar no Google Books</a>
             </div>
+            <div class="avaliacao">
+                <h3>Avalie este Livro:</h3>
+                <form id="form-avaliacao">
+                    <label for="avaliacao">Nota (1 a 5):</label>
+                    <div id="avaliacao">
+                        <span class="estrela" data-value="1">&#9733;</span>
+                        <span class="estrela" data-value="2">&#9733;</span>
+                        <span class="estrela" data-value="3">&#9733;</span>
+                        <span class="estrela" data-value="4">&#9733;</span>
+                        <span class="estrela" data-value="5">&#9733;</span>
+                    </div>
+                    <label for="comentario">Comentário:</label>
+                    <textarea id="comentario" rows="4" required></textarea>
+                    <button type="submit">Enviar Avaliação</button>
+                </form>
+                <div id="feedback-msg" class="feedback-msg"></div>
+                <div id="comentarios">
+                    <h4>Comentários e Avaliações:</h4>
+                    <ul id="lista-comentarios"></ul>
+                </div>
+            </div>
             <button id="voltarBtn">Voltar</button> <!-- Botão voltar -->
         `;
     
         paginaLivro.classList.add("visible"); // Mostra a página do livro
         catalogo.classList.add("hidden"); // Esconde o catálogo
-
+    
         // Adiciona o evento ao botão "Voltar"
         document.getElementById("voltarBtn").addEventListener("click", fecharPaginaLivro);
+    
+        // Variáveis para armazenar a avaliação
+        let notaSelecionada = 0;
+    
+        // Adiciona evento de clique nas estrelas
+        const estrelas = document.querySelectorAll("#avaliacao .estrela");
+        estrelas.forEach(estrela => {
+            estrela.addEventListener("click", function () {
+                notaSelecionada = parseInt(this.getAttribute("data-value"));
+                // Atualiza o visual das estrelas
+                estrelas.forEach(e => e.classList.remove("selecionada"));
+                for (let i = 0; i < notaSelecionada; i++) {
+                    estrelas[i].classList.add("selecionada");
+                }
+            });
+        });
+    
+        // Adicionar evento ao formulário de avaliação
+        const formAvaliacao = document.getElementById('form-avaliacao');
+        formAvaliacao.addEventListener('submit', function (event) {
+            event.preventDefault(); // Impede o envio tradicional do formulário
+    
+            // Verifica se a nota e o comentário foram preenchidos
+            if (notaSelecionada === 0 || document.getElementById('comentario').value.trim() === '') {
+                document.getElementById('feedback-msg').textContent = "Por favor, preencha todos os campos!";
+                document.getElementById('feedback-msg').style.color = "red";
+                return;
+            }
+    
+            // Obter o comentário
+            const comentario = document.getElementById('comentario').value;
+    
+            // Criar o novo comentário e avaliação
+            const comentarioItem = document.createElement('li');
+            comentarioItem.innerHTML = `<strong>Nota: ${notaSelecionada}</strong><p>${comentario}</p>`;
+    
+            // Adicionar à lista de comentários
+            document.getElementById('lista-comentarios').appendChild(comentarioItem);
+    
+            // Limpar os campos do formulário
+            document.getElementById('comentario').value = '';
+            notaSelecionada = 0;
+            estrelas.forEach(estrela => estrela.classList.remove("selecionada"));
+    
+            // Exibir mensagem de sucesso
+            document.getElementById('feedback-msg').textContent = "Obrigado pela sua avaliação!";
+            document.getElementById('feedback-msg').style.color = "green";
+        });
     }
     
     function fecharPaginaLivro() {
-        paginaLivro.classList.remove("visible"); // Remove a classe 'visible' para esconder
-        catalogo.classList.remove("hidden"); // Restaura a visibilidade do catálogo
-
-        // Recarrega os livros com a pesquisa anterior
-        buscarLivros(queryAtual);
-    }
+        paginaLivro.classList.remove("visible");
+        catalogo.classList.remove("hidden");
+    }    
 
     pesquisa.addEventListener("input", () => {
         const pesquisaValor = pesquisa.value;

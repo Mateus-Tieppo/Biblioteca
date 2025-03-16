@@ -465,3 +465,41 @@ h1 {
     color: white;
     transform: scale(1.05); /* Aumenta suavemente o botão */
 }
+
+.estrela {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.estrela.selecionada {
+    color: gold;
+}
+
+#form-avaliacao {
+    margin-bottom: 20px;
+}
+
+#comentarios {
+    margin-top: 20px;
+}
+
+#feedback-msg {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
